@@ -2,49 +2,87 @@
 export interface Props {
   title?: string;
   description?: string;
+  canonical?: string;
+  ogImage?: string;
 }
+
+const siteUrl = 'https://podoro.ch';
 
 const {
   title = 'PODORO – Podologiepraxis Muri AG',
-  description = 'Die Podologiepraxis PODORO bietet hochwertige medizinische Fusspflege in Muri AG. Professionelle Behandlungen für gesunde Füsse.',
+  description = 'Die Podologiepraxis PODORO bietet hochwertige medizinische Fusspflege in Muri AG. Professionelle Behandlungen für gesunde Füsse – Termine online buchbar.',
+  canonical = Astro.url.pathname,
+  ogImage = '/og-image.jpg',
 } = Astro.props;
----
 
+const fullTitle = title.includes('PODORO') ? title : `${title} | PODORO Podologiepraxis Muri AG`;
+const canonicalUrl = `${siteUrl}${canonical}`;
+---
 <!doctype html>
 <html lang="de">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonicalUrl} />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <title>{title}</title>
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={`${siteUrl}${ogImage}`} />
+    <meta property="og:locale" content="de_CH" />
+    <meta property="og:site_name" content="PODORO Podologiepraxis Muri AG" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={`${siteUrl}${ogImage}`} />
+
+    <title>{fullTitle}</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "MedicalBusiness",
-        "name": "PODORO GmbH",
-        "description": "Podologiepraxis in Muri AG – medizinische Fusspflege",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "Luzernerstrasse 15b",
-          "addressLocality": "Muri AG",
-          "postalCode": "5630",
-          "addressCountry": "CH"
-        },
-        "telephone": "+41566107070",
-        "email": "info@podoro.ch",
-        "url": "https://podoro.ch"
-      }
+    {
+      "@context": "https://schema.org",
+      "@type": "MedicalBusiness",
+      "name": "PODORO GmbH",
+      "alternateName": "PODORO Podologiepraxis Muri AG",
+      "description": "Podologiepraxis in Muri AG – medizinische Fusspflege, Behandlung von Risikopatienten, Diabetiker-Fusspflege",
+      "url": "https://podoro.ch",
+      "logo": "https://podoro.ch/logo-podoro.png",
+      "image": "https://podoro.ch/fusspflege.jpeg",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Luzernerstrasse 15b",
+        "addressLocality": "Muri",
+        "addressRegion": "AG",
+        "postalCode": "5630",
+        "addressCountry": "CH"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 47.2741,
+        "longitude": 8.3393
+      },
+      "telephone": "+41566107070",
+      "email": "info@podoro.ch",
+      "openingHoursSpecification": [
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "18:00" }
+      ],
+      "priceRange": "$$",
+      "medicalSpecialty": "Podologie",
+      "sameAs": []
+    }
     </script>
   </head>
   <body>

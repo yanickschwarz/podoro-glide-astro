@@ -10,20 +10,17 @@ import FooterSection from '../components/FooterSection.astro';
 import '../styles/global.css';
 ---
 
-<Layout>
+<Layout
+  title="PODORO – Podologiepraxis Muri AG | Medizinische Fusspflege"
+  description="Professionelle medizinische Fusspflege in Muri AG. PODORO bietet Podologie-Behandlungen für Risikopatienten, Diabetiker und alle, die gesunde Füsse schätzen. Jetzt Termin buchen."
+  canonical="/"
+>
   <!-- Loading Screen -->
   <div id="loading-screen">
-    <img
-      id="loading-logo"
-      src="/logo-podoro.png"
-      alt="PODORO Podologiepraxis"
-      width="500"
-      height="167"
-    />
+    <img id="loading-logo" src="/logo-podoro.png" alt="PODORO Podologiepraxis" width="500" height="167" />
   </div>
 
   <Navigation />
-
   <main>
     <HeroSection />
     <WelcomeSection />
@@ -31,47 +28,25 @@ import '../styles/global.css';
     <TeamSection />
     <ContactSection />
   </main>
-
   <FooterSection />
 </Layout>
 
 <script>
-  // Loading screen
   const loadingScreen = document.getElementById('loading-screen');
   const loadingLogo = document.getElementById('loading-logo');
   const mainNav = document.getElementById('main-nav');
   const heroSlogan = document.getElementById('hero-slogan');
   const heroFg = document.getElementById('hero-fg');
 
-  // Show logo after short delay
-  setTimeout(() => {
-    loadingLogo?.classList.add('visible');
-  }, 300);
-
-  // Hide loading screen after 2s
+  setTimeout(() => { loadingLogo?.classList.add('visible'); }, 300);
   setTimeout(() => {
     loadingScreen?.classList.add('hidden');
-    // Remove from DOM after transition
-    setTimeout(() => {
-      loadingScreen?.remove();
-    }, 1500);
+    setTimeout(() => { loadingScreen?.remove(); }, 1500);
   }, 2000);
+  setTimeout(() => { mainNav?.classList.add('visible'); }, 2500);
+  setTimeout(() => { heroFg?.classList.add('visible'); }, 2200);
+  setTimeout(() => { heroSlogan?.classList.add('visible'); }, 2800);
 
-  // Animate nav after loading
-  setTimeout(() => {
-    mainNav?.classList.add('visible');
-  }, 2500);
-
-  // Animate hero elements
-  setTimeout(() => {
-    heroFg?.classList.add('visible');
-  }, 2200);
-
-  setTimeout(() => {
-    heroSlogan?.classList.add('visible');
-  }, 2800);
-
-  // Intersection Observer for scroll animations
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -83,8 +58,5 @@ import '../styles/global.css';
     },
     { threshold: 0.1, rootMargin: '-80px 0px' }
   );
-
-  document.querySelectorAll('.fade-up').forEach((el) => {
-    observer.observe(el);
-  });
+  document.querySelectorAll('.fade-up').forEach((el) => { observer.observe(el); });
 </script>

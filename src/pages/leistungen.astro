@@ -1,0 +1,143 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+import FooterSection from '../components/FooterSection.astro';
+import '../styles/global.css';
+
+const services = [
+  {
+    title: "Medizinische Behandlung",
+    image: "/fusspflege.jpeg",
+    short: "Die komplette medizinische Behandlung dient der fachgerechten Pflege und Gesunderhaltung Ihrer Füsse.",
+    long: "Sie umfasst die Beurteilung von Haut und Nägeln, das fachgerechte Kürzen und Schleifen der Nägel, die Entfernung von Hornhaut und Druckstellen sowie die Behandlung von eingewachsenen oder verdickten Nägeln. Bei Bedarf werden Hühneraugen (Clavi) behandelt und entlastende Massnahmen angewendet. Abschliessend erhalten Sie eine pflegende Versorgung sowie individuelle Empfehlungen für die häusliche Pflege.",
+    link: null,
+  },
+  {
+    title: "Teilbehandlung",
+    image: null,
+    short: "Die podologische Teilbehandlung konzentriert sich gezielt auf ein spezifisches Problem an den Füssen.",
+    long: "Sie umfasst die fachgerechte Behandlung einzelner Beschwerden wie z. B. eingewachsene Nägel, Hühneraugen (Clavi), Druckstellen oder lokal begrenzte Hornhaut. Die Behandlung erfolgt präzise, schonend und individuell abgestimmt, um Beschwerden zu lindern und Folgeschäden vorzubeugen.",
+    link: null,
+  },
+  {
+    title: "Risikopatienten",
+    image: null,
+    short: "Die Behandlung von Risikopatienten richtet sich an Personen mit erhöhtem Komplikationsrisiko – insbesondere Diabetikerinnen und Diabetiker.",
+    long: "Im Mittelpunkt stehen eine besonders sorgfältige Befunderhebung, schonende Behandlungstechniken sowie höchste hygienische Standards. Ziel ist es, Druckstellen, Hautläsionen und Entzündungen frühzeitig zu erkennen und fachgerecht zu versorgen, um schwerwiegende Folgekomplikationen zu vermeiden.",
+    link: { label: "Gehöre ich zu den Risikopatienten?", url: "https://www.podologie.swiss/wp-content/uploads/2020/10/definition_risikogruppen_2019.pdf" },
+  },
+  {
+    title: "Krankenkasse",
+    image: "/fuesse.jpeg",
+    short: "Seit dem 1. Januar 2022 können Podologinnen und Podologen die medizinische Fusspflege bei Personen mit Diabetes über die OKP abrechnen.",
+    long: "Voraussetzung ist, dass ein Risikofaktor für ein diabetisches Fuss-Syndrom (DFS) vorliegt und eine ärztliche Verordnung besteht. Bitte bringen Sie bei Ihrer ersten Konsultation Ihre Krankenkassenkarte und eine vollständig ausgefüllte Verordnung mit.",
+    link: { label: "Verordnungsformular herunterladen", url: "https://www.podologie.swiss/wp-content/uploads/2022/12/221214ab_d_02_verordnungsformular_podologie-de.pdf" },
+  },
+  {
+    title: "Nagelspangentherapie",
+    image: null,
+    short: "Die Nagelspangentherapie ist eine konservative, schmerzarme Methode zur Behandlung eingewachsener Nägel.",
+    long: "Mithilfe einer speziellen Spange wird der Nagel sanft in die gewünschte Form gelenkt und entlastet. Diese Therapie ist besonders für Patientinnen und Patienten geeignet, die eine operative Behandlung vermeiden möchten. Die Spange ist unsichtbar unter normalem Schuhwerk und kann den Nagel dauerhaft korrigieren.",
+    link: null,
+  },
+  {
+    title: "Wundversorgung & Nachsorge",
+    image: null,
+    short: "Professionelle Wundversorgung für akute und chronische Fussläsionen – mit engmaschiger Nachsorge.",
+    long: "Offene Stellen, chronische Wunden und postoperative Narbenbehandlungen erfordern besondere Sorgfalt. In Zusammenarbeit mit Ihrem behandelnden Arzt übernehmen wir die fachgerechte Wundversorgung und begleiten Sie bis zur vollständigen Heilung. Wir setzen auf moderne Verbandmaterialien und dokumentieren den Heilungsverlauf systematisch.",
+    link: null,
+  },
+];
+---
+
+<Layout
+  title="Leistungen – Podologie & medizinische Fusspflege"
+  description="Alle podologischen Leistungen von PODORO in Muri AG: medizinische Behandlung, Risikopatienten, Krankenkasse OKP, Nagelspangentherapie und Wundversorgung."
+  canonical="/leistungen"
+>
+  <Navigation />
+
+  <main class="pt-[18vh]">
+    <!-- Hero -->
+    <section class="px-[5vw] pb-[10vh]">
+      <h1 class="text-[clamp(3rem,10vw,11rem)] leading-[0.95] text-primary mb-[4vh] fade-up">
+        Leistungen
+      </h1>
+      <p class="font-body text-[clamp(1rem,1.8vw,1.4rem)] font-light text-muted-foreground max-w-[640px] fade-up leading-relaxed">
+        Professionelle Podologie-Behandlungen – individuell abgestimmt auf Ihre Bedürfnisse. Von der klassischen medizinischen Fusspflege bis zur spezialisierten Diabetiker-Versorgung.
+      </p>
+    </section>
+
+    <!-- Services Accordion -->
+    <section class="px-[5vw] pb-[14vh]">
+      <div class="space-y-0">
+        {services.map((service, i) => (
+          <div class="border-t border-foreground/20 cursor-pointer service-item fade-up" data-index={i}>
+            <div class="flex items-center justify-between py-[3vh]">
+              <h2 class="text-[clamp(1.2rem,4vw,3.5rem)] text-primary">{service.title}</h2>
+              <span class="service-icon text-[clamp(1.5rem,3vw,2.5rem)] text-primary/40 transition-transform duration-300">+</span>
+            </div>
+            <div class="service-content">
+              <div class="pb-[4vh] grid grid-cols-1 md:grid-cols-2 gap-[4vw]">
+                {service.image && (
+                  <div class="overflow-hidden">
+                    <img src={service.image} alt={service.title} class="w-full aspect-[16/10] object-cover" loading="lazy" />
+                  </div>
+                )}
+                <div class={service.image ? '' : 'md:col-span-2 max-w-[800px]'}>
+                  <p class="font-body text-[clamp(1rem,1.6vw,1.3rem)] font-medium leading-relaxed text-foreground mb-4">{service.short}</p>
+                  <p class="font-body text-[clamp(0.9rem,1.3vw,1.1rem)] font-light leading-relaxed text-muted-foreground">{service.long}</p>
+                  {service.link && (
+                    <a href={service.link.url} target="_blank" rel="noopener noreferrer"
+                      class="inline-block mt-6 font-body text-[clamp(0.9rem,1.2vw,1.1rem)] font-medium text-primary underline underline-offset-4 hover:opacity-60 transition-opacity">
+                      {service.link.label} →
+                    </a>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+        <div class="border-t border-foreground/20"></div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="px-[5vw] py-[10vh] bg-primary text-center">
+      <h2 class="text-[clamp(1.8rem,5vw,5rem)] leading-[0.95] text-primary-foreground mb-6 fade-up">
+        Termin vereinbaren
+      </h2>
+      <p class="font-body text-[clamp(1rem,1.5vw,1.2rem)] font-light text-primary-foreground/70 mb-8 fade-up">
+        Wir freuen uns auf Ihre Anfrage und beraten Sie gerne persönlich.
+      </p>
+      <a href="/kontakt" class="fade-up inline-block font-body text-sm tracking-[0.2em] uppercase text-primary-foreground border border-primary-foreground/40 px-10 py-4 hover:bg-primary-foreground hover:text-primary transition-all duration-300">
+        Jetzt Kontakt aufnehmen
+      </a>
+    </section>
+  </main>
+
+  <FooterSection />
+</Layout>
+
+<script>
+  const items = document.querySelectorAll('.service-item');
+  items.forEach((item) => {
+    item.addEventListener('click', () => {
+      const content = item.querySelector('.service-content') as HTMLElement;
+      const icon = item.querySelector('.service-icon') as HTMLElement;
+      const isOpen = content?.classList.contains('open');
+      document.querySelectorAll('.service-content').forEach(c => c.classList.remove('open'));
+      document.querySelectorAll('.service-icon').forEach(i => i.classList.remove('open'));
+      if (!isOpen && content && icon) { content.classList.add('open'); icon.classList.add('open'); }
+    });
+  });
+
+  const observer = new IntersectionObserver(
+    (entries) => { entries.forEach((entry) => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } }); },
+    { threshold: 0.1, rootMargin: '-80px 0px' }
+  );
+  document.querySelectorAll('.fade-up').forEach((el) => { observer.observe(el); });
+
+  const mainNav = document.getElementById('main-nav');
+  setTimeout(() => { mainNav?.classList.add('visible'); }, 100);
+</script>

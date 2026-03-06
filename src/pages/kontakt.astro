@@ -1,0 +1,137 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+import FooterSection from '../components/FooterSection.astro';
+import '../styles/global.css';
+---
+
+<Layout
+  title="Kontakt – Termin & Anfahrt PODORO Podologiepraxis Muri AG"
+  description="Kontaktieren Sie die Podologiepraxis PODORO in Muri AG. Telefon: 056 610 70 70 | E-Mail: info@podoro.ch | Luzernerstrasse 15b, 5630 Muri AG. Termin online anfragen."
+  canonical="/kontakt"
+>
+  <Navigation />
+
+  <main class="pt-[18vh]">
+    <!-- Header -->
+    <section class="px-[5vw] pb-[10vh]">
+      <h1 class="text-[clamp(3rem,10vw,11rem)] leading-[0.95] text-primary mb-[4vh] fade-up">
+        Kontakt
+      </h1>
+      <p class="font-body text-[clamp(1rem,1.8vw,1.4rem)] font-light text-muted-foreground max-w-[540px] fade-up leading-relaxed">
+        Wir freuen uns auf Ihre Kontaktaufnahme. Vereinbaren Sie Ihren Termin per Telefon oder E-Mail.
+      </p>
+    </section>
+
+    <!-- Kontaktinfos & Karte -->
+    <section class="px-[5vw] pb-[14vh] bg-primary py-[12vh]">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-[6vw]">
+        <div class="fade-up">
+          <div class="font-body text-[clamp(1rem,1.6vw,1.3rem)] font-light text-primary-foreground/90 space-y-6">
+            <div>
+              <p class="font-medium text-primary-foreground text-[clamp(1.2rem,2vw,1.6rem)]">PODORO GmbH</p>
+              <p>Luzernerstrasse 15b</p>
+              <p>5630 Muri AG</p>
+            </div>
+            <div>
+              <a href="tel:+41566107070" class="block hover:opacity-60 transition-opacity">056 610 70 70</a>
+              <a href="mailto:info@podoro.ch" class="block hover:opacity-60 transition-opacity">info@podoro.ch</a>
+            </div>
+          </div>
+
+          <!-- Öffnungszeiten -->
+          <div class="mt-[6vh]">
+            <h2 class="text-[clamp(1.2rem,3vw,2rem)] text-primary-foreground mb-4">Öffnungszeiten</h2>
+            <table class="font-body text-[clamp(0.85rem,1.2vw,1.1rem)] font-light text-primary-foreground/70 w-full max-w-[360px]">
+              <tbody>
+                <tr class="border-b border-primary-foreground/10">
+                  <td class="py-2 pr-6 font-medium text-primary-foreground/80">Montag – Freitag</td>
+                  <td class="py-2">08:00 – 18:00 Uhr</td>
+                </tr>
+                <tr class="border-b border-primary-foreground/10">
+                  <td class="py-2 pr-6 font-medium text-primary-foreground/80">Samstag</td>
+                  <td class="py-2">Nach Vereinbarung</td>
+                </tr>
+                <tr>
+                  <td class="py-2 pr-6 font-medium text-primary-foreground/80">Sonntag</td>
+                  <td class="py-2">Geschlossen</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Anfahrt -->
+          <div class="mt-[6vh]">
+            <h2 class="text-[clamp(1.2rem,3vw,2rem)] text-primary-foreground mb-4">Anfahrt</h2>
+            <div class="font-body text-[clamp(0.85rem,1.2vw,1rem)] font-light text-primary-foreground/60 space-y-3">
+              <div>
+                <p class="font-medium text-primary-foreground/80">Mit dem ÖV</p>
+                <p>Vom Bahnhof Muri ca. 10 Minuten zu Fuss über die Bahnhofstrasse Richtung Zentrum.</p>
+              </div>
+              <div>
+                <p class="font-medium text-primary-foreground/80">Mit dem Auto</p>
+                <p>Kostenpflichtige Aussenparkplätze und Tiefgaragenplätze (Besucher) direkt vor Ort.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="fade-up w-full min-h-[500px] rounded-sm overflow-hidden">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1355.8!2d8.3395!3d47.2755!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479acd1b3e8f1b3d%3A0x2a0ed14d93e6e8f!2sLuzernerstrasse%2015b%2C%205630%20Muri%20AG!5e0!3m2!1sde!2sch!4v1700000000000"
+            width="100%" height="100%" style="border: 0; min-height: 500px;"
+            allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            title="Standort PODORO Podologiepraxis Muri AG"
+          ></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- Kontaktformular -->
+    <section class="px-[5vw] py-[12vh]">
+      <h2 class="text-[clamp(2rem,6vw,7rem)] leading-[0.95] text-primary mb-[6vh] fade-up">
+        Nachricht senden
+      </h2>
+      <form action="mailto:info@podoro.ch" method="post" enctype="text/plain" class="max-w-[640px] fade-up space-y-6" aria-label="Kontaktformular">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label for="name" class="font-body text-xs tracking-[0.15em] uppercase text-muted-foreground block mb-2">Name *</label>
+            <input type="text" id="name" name="name" required autocomplete="name"
+              class="w-full bg-transparent border-b border-foreground/30 pb-2 font-body text-base text-foreground focus:outline-none focus:border-primary transition-colors" />
+          </div>
+          <div>
+            <label for="tel" class="font-body text-xs tracking-[0.15em] uppercase text-muted-foreground block mb-2">Telefon</label>
+            <input type="tel" id="tel" name="telefon" autocomplete="tel"
+              class="w-full bg-transparent border-b border-foreground/30 pb-2 font-body text-base text-foreground focus:outline-none focus:border-primary transition-colors" />
+          </div>
+        </div>
+        <div>
+          <label for="email" class="font-body text-xs tracking-[0.15em] uppercase text-muted-foreground block mb-2">E-Mail *</label>
+          <input type="email" id="email" name="email" required autocomplete="email"
+            class="w-full bg-transparent border-b border-foreground/30 pb-2 font-body text-base text-foreground focus:outline-none focus:border-primary transition-colors" />
+        </div>
+        <div>
+          <label for="nachricht" class="font-body text-xs tracking-[0.15em] uppercase text-muted-foreground block mb-2">Nachricht *</label>
+          <textarea id="nachricht" name="nachricht" rows="5" required
+            class="w-full bg-transparent border-b border-foreground/30 pb-2 font-body text-base text-foreground focus:outline-none focus:border-primary transition-colors resize-none"></textarea>
+        </div>
+        <button type="submit"
+          class="font-body text-sm tracking-[0.2em] uppercase text-primary-foreground bg-primary px-10 py-4 hover:opacity-80 transition-opacity">
+          Senden →
+        </button>
+      </form>
+    </section>
+  </main>
+
+  <FooterSection />
+</Layout>
+
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => { entries.forEach((entry) => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } }); },
+    { threshold: 0.1, rootMargin: '-80px 0px' }
+  );
+  document.querySelectorAll('.fade-up').forEach((el) => { observer.observe(el); });
+  const mainNav = document.getElementById('main-nav');
+  setTimeout(() => { mainNav?.classList.add('visible'); }, 100);
+</script>

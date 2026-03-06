@@ -1,10 +1,14 @@
 ---
+const navLinks = [
+  { href: '/leistungen', label: 'Leistungen' },
+  { href: '/ueber-uns', label: 'Über uns' },
+  { href: '/kontakt', label: 'Kontakt' },
+  { href: '/galerie', label: 'Galerie' },
+];
+const currentPath = Astro.url.pathname;
 ---
 
-<header
-  id="main-nav"
-  class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-[5vw] py-5"
->
+<header id="main-nav" class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-[5vw] py-5">
   <!-- Backdrop gradient on scroll -->
   <div
     id="nav-backdrop"
@@ -13,55 +17,64 @@
   ></div>
 
   <!-- Left menu -->
-  <nav class="relative hidden md:flex items-center gap-8 flex-1">
-    <a
-      href="#leistungen"
-      class="font-body text-xs font-medium tracking-[0.2em] uppercase text-primary-foreground/90 transition-opacity hover:opacity-60 drop-shadow-sm"
-    >
+  <nav class="relative hidden md:flex items-center gap-8 flex-1" aria-label="Hauptnavigation links">
+    <a href="/leistungen" class={`font-body text-xs font-medium tracking-[0.2em] uppercase text-primary-foreground/90 transition-opacity hover:opacity-60 drop-shadow-sm ${currentPath === '/leistungen' ? 'opacity-60' : ''}`}>
       Leistungen
     </a>
-    <a
-      href="#ueber-uns"
-      class="font-body text-xs font-medium tracking-[0.2em] uppercase text-primary-foreground/90 transition-opacity hover:opacity-60 drop-shadow-sm"
-    >
+    <a href="/ueber-uns" class={`font-body text-xs font-medium tracking-[0.2em] uppercase text-primary-foreground/90 transition-opacity hover:opacity-60 drop-shadow-sm ${currentPath === '/ueber-uns' ? 'opacity-60' : ''}`}>
       Über uns
     </a>
   </nav>
 
   <!-- Center logo -->
-  <a href="#top" class="relative">
-    <img
-      src="/logo-podoro.png"
-      alt="PODORO"
-      class="w-[130px] md:w-[150px] drop-shadow-lg"
-      width="150"
-      height="50"
-    />
+  <a href="/" class="relative" aria-label="PODORO – Startseite">
+    <img src="/logo-podoro.png" alt="PODORO Podologiepraxis Muri AG" class="w-[130px] md:w-[150px] drop-shadow-lg" width="150" height="50" />
   </a>
 
   <!-- Right menu -->
-  <nav class="relative hidden md:flex items-center justify-end gap-8 flex-1">
-    <a
-      href="#kontakt"
-      class="font-body text-xs font-medium tracking-[0.2em] uppercase text-primary-foreground/90 transition-opacity hover:opacity-60 drop-shadow-sm"
-    >
+  <nav class="relative hidden md:flex items-center justify-end gap-8 flex-1" aria-label="Hauptnavigation rechts">
+    <a href="/kontakt" class={`font-body text-xs font-medium tracking-[0.2em] uppercase text-primary-foreground/90 transition-opacity hover:opacity-60 drop-shadow-sm ${currentPath === '/kontakt' ? 'opacity-60' : ''}`}>
       Kontakt
     </a>
-    <a
-      href="#galerie"
-      class="font-body text-xs font-medium tracking-[0.2em] uppercase text-primary-foreground/90 transition-opacity hover:opacity-60 drop-shadow-sm"
-    >
+    <a href="/galerie" class={`font-body text-xs font-medium tracking-[0.2em] uppercase text-primary-foreground/90 transition-opacity hover:opacity-60 drop-shadow-sm ${currentPath === '/galerie' ? 'opacity-60' : ''}`}>
       Galerie
     </a>
   </nav>
+
+  <!-- Mobile burger -->
+  <button id="mobile-menu-btn" class="relative md:hidden ml-auto" aria-label="Menü öffnen" aria-expanded="false">
+    <span class="burger-line block w-6 h-0.5 bg-primary-foreground mb-1.5 transition-all duration-300"></span>
+    <span class="burger-line block w-6 h-0.5 bg-primary-foreground mb-1.5 transition-all duration-300"></span>
+    <span class="burger-line block w-6 h-0.5 bg-primary-foreground transition-all duration-300"></span>
+  </button>
 </header>
 
+<!-- Mobile menu -->
+<div id="mobile-menu" class="fixed inset-0 z-40 bg-primary flex-col items-center justify-center gap-8 hidden">
+  <a href="/" class="mb-8"><img src="/logo-podoro.png" alt="PODORO" class="w-[160px]" /></a>
+  {navLinks.map(link => (
+    <a href={link.href} class="font-body text-2xl tracking-[0.2em] uppercase text-primary-foreground/90 hover:opacity-60 transition-opacity">
+      {link.label}
+    </a>
+  ))}
+</div>
+
 <script>
-  // Scroll backdrop
   const backdrop = document.getElementById('nav-backdrop');
   window.addEventListener('scroll', () => {
-    if (backdrop) {
-      backdrop.style.opacity = window.scrollY > 100 ? '1' : '0';
-    }
+    if (backdrop) backdrop.style.opacity = window.scrollY > 100 ? '1' : '0';
   }, { passive: true });
+
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  btn?.addEventListener('click', () => {
+    const isOpen = menu?.classList.contains('flex');
+    menu?.classList.toggle('hidden', isOpen);
+    menu?.classList.toggle('flex', !isOpen);
+    btn.setAttribute('aria-expanded', (!isOpen).toString());
+  });
+  menu?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    menu.classList.add('hidden');
+    menu.classList.remove('flex');
+  }));
 </script>

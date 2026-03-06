@@ -1,0 +1,123 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+import FooterSection from '../components/FooterSection.astro';
+import '../styles/global.css';
+
+const team = [
+  {
+    name: "Noëlle Rohrbach",
+    role: "Inhaberin & dipl. Podologin HF",
+    image: "/portrait-noelle.jpeg",
+    bio: "Noëlle Rohrbach ist diplomierte Podologin HF und Gründerin der PODORO GmbH. Mit ihrer Ausbildung als Berufsbildnerin, dem Abschluss des Diabetes- und Hygieneseminars sowie ihrer Mitgliedschaft im Schweizerischen Podologenverband (SPV) steht sie für höchste Fachkompetenz und Qualitätsbewusstsein. Ihr Ziel ist es, jedem Patienten eine individuelle, respektvolle Behandlung zu bieten – mit Empathie und einem geschulten Blick für Details.",
+  },
+  {
+    name: "Marlène Rohrbach",
+    role: "Administration & Empfang",
+    image: "/portrait-marlene.jpeg",
+    bio: "Marlène Rohrbach sorgt im Hintergrund dafür, dass der Praxisalltag reibungslos funktioniert. Sie ist Ihre erste Ansprechperson für Terminvereinbarungen, Abrechnungsfragen und allgemeine Anfragen. Mit ihrer herzlichen und strukturierten Art schafft sie eine angenehme Atmosphäre für alle Patientinnen und Patienten.",
+  },
+];
+
+const values = [
+  { title: "Fachkompetenz", text: "Alle Behandlungen werden von diplomierten Podologinnen HF durchgeführt – nach aktuellsten medizinischen Standards." },
+  { title: "Hygiene", text: "Wir arbeiten nach den höchsten Hygienestandards des Schweizerischen Podologenverbands und verwenden sterile Einmalinstrumente." },
+  { title: "Empathie", text: "Jeder Patient verdient Aufmerksamkeit, Respekt und eine individuelle Betreuung. Das ist für uns selbstverständlich." },
+  { title: "Transparenz", text: "Wir informieren Sie klar über Behandlungsoptionen, Kosten und Abläufe – damit Sie gut informiert entscheiden können." },
+];
+---
+
+<Layout
+  title="Über uns – Team & Philosophie der PODORO Podologiepraxis"
+  description="Lernen Sie das Team hinter PODORO kennen: Noëlle Rohrbach (dipl. Podologin HF) und Marlène Rohrbach. Erfahren Sie mehr über unsere Werte und unser Engagement für gesunde Füsse."
+  canonical="/ueber-uns"
+>
+  <Navigation />
+
+  <main class="pt-[18vh]">
+    <!-- Intro -->
+    <section class="px-[5vw] pb-[10vh]">
+      <h1 class="text-[clamp(3rem,10vw,11rem)] leading-[0.95] text-primary mb-[4vh] fade-up">
+        Über uns
+      </h1>
+      <div class="max-w-[700px] ml-auto mr-[5vw] fade-up">
+        <p class="font-body text-[clamp(1rem,1.8vw,1.4rem)] font-light leading-relaxed text-foreground">
+          Die Podologiepraxis PODORO wurde mit einem klaren Anspruch gegründet: medizinische Fusspflege auf höchstem Niveau – menschlich, kompetent und mit echter Leidenschaft für das Wohlbefinden unserer Patientinnen und Patienten.
+        </p>
+      </div>
+    </section>
+
+    <!-- Team -->
+    <section class="px-[5vw] pb-[14vh] bg-primary py-[12vh]">
+      <h2 class="text-[clamp(2rem,7vw,8rem)] leading-[0.95] text-primary-foreground mb-[8vh] fade-up">
+        Unser Team
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-[4vw]">
+        {team.map((member) => (
+          <article class="group fade-up">
+            <div class="overflow-hidden mb-6">
+              <img
+                src={member.image}
+                alt={`Portrait von ${member.name}`}
+                class="w-full aspect-[3/4] object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                loading="lazy"
+              />
+            </div>
+            <h2 class="text-[clamp(1.2rem,3vw,2.5rem)] text-primary-foreground">
+              {member.name}
+            </h2>
+            <p class="font-body text-[clamp(0.9rem,1.4vw,1.2rem)] font-medium text-primary-foreground/60 mb-3">
+              {member.role}
+            </p>
+            <p class="font-body text-[clamp(0.85rem,1.2vw,1.1rem)] font-light text-primary-foreground/70 leading-relaxed">
+              {member.bio}
+            </p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <!-- Values -->
+    <section class="px-[5vw] py-[12vh]">
+      <h2 class="text-[clamp(2rem,7vw,8rem)] leading-[0.95] text-primary mb-[8vh] fade-up">
+        Unsere Werte
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-x-[6vw] gap-y-[5vh]">
+        {values.map((v) => (
+          <div class="border-t border-foreground/20 pt-6 fade-up">
+            <h3 class="text-[clamp(1.2rem,2.5vw,2.5rem)] text-primary mb-3">{v.title}</h3>
+            <p class="font-body text-[clamp(0.9rem,1.3vw,1.1rem)] font-light text-muted-foreground leading-relaxed">{v.text}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Verband -->
+    <section class="px-[5vw] pb-[12vh]">
+      <div class="border-t border-foreground/20 pt-10 fade-up max-w-[700px]">
+        <h2 class="text-[clamp(1.5rem,4vw,4rem)] leading-[0.95] text-primary mb-6">
+          Mitglied des SPV
+        </h2>
+        <p class="font-body text-[clamp(0.9rem,1.4vw,1.2rem)] font-light text-muted-foreground leading-relaxed mb-6">
+          PODORO ist Mitglied des Schweizerischen Podologenverbands (SPV). Der Verband setzt die Standards für die Aus- und Weiterbildung sowie für die Berufsausübung in der Schweizer Podologie. Die Mitgliedschaft ist für uns ein Zeichen von Qualität und Verantwortung gegenüber unseren Patientinnen und Patienten.
+        </p>
+        <a href="https://www.podologie.swiss" target="_blank" rel="noopener noreferrer"
+          class="font-body text-sm tracking-[0.15em] uppercase text-primary underline underline-offset-4 hover:opacity-60 transition-opacity">
+          Mehr über den SPV →
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <FooterSection />
+</Layout>
+
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => { entries.forEach((entry) => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } }); },
+    { threshold: 0.1, rootMargin: '-80px 0px' }
+  );
+  document.querySelectorAll('.fade-up').forEach((el) => { observer.observe(el); });
+  const mainNav = document.getElementById('main-nav');
+  setTimeout(() => { mainNav?.classList.add('visible'); }, 100);
+</script>

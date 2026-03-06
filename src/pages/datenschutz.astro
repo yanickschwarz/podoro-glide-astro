@@ -1,0 +1,105 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+import FooterSection from '../components/FooterSection.astro';
+import '../styles/global.css';
+---
+
+<Layout
+  title="Datenschutzerklärung – PODORO GmbH Podologiepraxis Muri AG"
+  description="Datenschutzerklärung der PODORO GmbH gemäss Schweizer Datenschutzgesetz (DSG). Informationen über die Bearbeitung von Personendaten auf unserer Website."
+  canonical="/datenschutz"
+>
+  <Navigation />
+
+  <main class="pt-[18vh] pb-[14vh] px-[5vw]">
+    <h1 class="text-[clamp(3rem,9vw,10rem)] leading-[0.95] text-primary mb-[8vh] fade-up">
+      Datenschutz
+    </h1>
+
+    <div class="max-w-[720px] space-y-12 fade-up font-body text-[clamp(0.9rem,1.4vw,1.15rem)] font-light text-muted-foreground leading-relaxed">
+
+      <section>
+        <h2 class="text-[clamp(1.2rem,3vw,2.5rem)] text-primary mb-4 font-heading">Allgemeines</h2>
+        <p>Die PODORO GmbH nimmt den Schutz Ihrer persönlichen Daten sehr ernst und behandelt Ihre Personendaten vertraulich und entsprechend dem Schweizer Datenschutzgesetz (DSG) sowie der EU-DSGVO, soweit diese anwendbar ist. Diese Datenschutzerklärung gilt für die Website <a href="https://podoro.ch" class="underline underline-offset-4 hover:opacity-70 transition-opacity text-foreground">podoro.ch</a>.</p>
+      </section>
+
+      <section>
+        <h2 class="text-[clamp(1.2rem,3vw,2.5rem)] text-primary mb-4 font-heading">Verantwortliche Stelle</h2>
+        <address class="not-italic space-y-1">
+          <p><strong class="text-foreground font-medium">PODORO GmbH</strong></p>
+          <p>Luzernerstrasse 15b</p>
+          <p>5630 Muri AG</p>
+          <p>Schweiz</p>
+          <p><a href="tel:+41566107070" class="underline underline-offset-4 hover:opacity-70 transition-opacity text-foreground">056 610 70 70</a></p>
+          <p><a href="mailto:info@podoro.ch" class="underline underline-offset-4 hover:opacity-70 transition-opacity text-foreground">info@podoro.ch</a></p>
+        </address>
+      </section>
+
+      <section>
+        <h2 class="text-[clamp(1.2rem,3vw,2.5rem)] text-primary mb-4 font-heading">Welche Daten wir erheben</h2>
+        <p class="mb-4">Beim Besuch unserer Website werden automatisch folgende Daten durch den Webserver erfasst und in Logfiles gespeichert:</p>
+        <ul class="list-disc list-inside space-y-1 ml-2">
+          <li>IP-Adresse (anonymisiert)</li>
+          <li>Datum und Uhrzeit des Besuchs</li>
+          <li>Aufgerufene Seiten und URLs</li>
+          <li>Verwendeter Browser und Betriebssystem</li>
+          <li>Verweisende Website (Referrer)</li>
+        </ul>
+        <p class="mt-4">Diese Daten werden ausschliesslich zur Gewährleistung des Betriebs der Website und zur Behebung von Fehlern verwendet und nach 30 Tagen gelöscht.</p>
+      </section>
+
+      <section>
+        <h2 class="text-[clamp(1.2rem,3vw,2.5rem)] text-primary mb-4 font-heading">Kontaktformular & E-Mail</h2>
+        <p>Wenn Sie uns über das Kontaktformular oder per E-Mail kontaktieren, werden Ihre angegebenen Daten (Name, E-Mail-Adresse, Telefon, Nachricht) zum Zweck der Bearbeitung Ihrer Anfrage gespeichert. Diese Daten werden nicht an Dritte weitergegeben und nur für die Kommunikation mit Ihnen verwendet. Nach abgeschlossener Bearbeitung werden die Daten gelöscht, sofern keine gesetzlichen Aufbewahrungspflichten bestehen.</p>
+      </section>
+
+      <section>
+        <h2 class="text-[clamp(1.2rem,3vw,2.5rem)] text-primary mb-4 font-heading">Patientendaten</h2>
+        <p>Alle im Rahmen der medizinischen Behandlung erhobenen Patientendaten unterliegen dem Arztgeheimnis und werden streng vertraulich behandelt. Sie werden ausschliesslich zum Zweck der Behandlung und Abrechnung verwendet und nicht ohne Ihre ausdrückliche Einwilligung an Dritte weitergegeben, soweit dies nicht gesetzlich vorgeschrieben ist (z. B. Abrechnung mit Krankenkassen).</p>
+      </section>
+
+      <section>
+        <h2 class="text-[clamp(1.2rem,3vw,2.5rem)] text-primary mb-4 font-heading">Cookies</h2>
+        <p>Unsere Website verwendet ausschliesslich technisch notwendige Cookies, die für den Betrieb der Website erforderlich sind. Es werden keine Tracking-Cookies oder Cookies zu Werbezwecken eingesetzt. Eine Einwilligung ist für technisch notwendige Cookies nicht erforderlich.</p>
+      </section>
+
+      <section>
+        <h2 class="text-[clamp(1.2rem,3vw,2.5rem)] text-primary mb-4 font-heading">Google Maps</h2>
+        <p>Auf unserer Kontaktseite verwenden wir Google Maps. Beim Laden der Karte werden Daten an Google LLC (USA) übertragen. Wenn Sie die Karte nutzen, stimmen Sie der Datenverarbeitung durch Google zu. Weitere Informationen finden Sie in der <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" class="underline underline-offset-4 hover:opacity-70 transition-opacity text-foreground">Datenschutzerklärung von Google</a>.</p>
+      </section>
+
+      <section>
+        <h2 class="text-[clamp(1.2rem,3vw,2.5rem)] text-primary mb-4 font-heading">Ihre Rechte</h2>
+        <p class="mb-4">Sie haben nach dem Schweizer Datenschutzgesetz (DSG) folgende Rechte:</p>
+        <ul class="list-disc list-inside space-y-1 ml-2">
+          <li>Recht auf Auskunft über Ihre gespeicherten Daten</li>
+          <li>Recht auf Berichtigung unrichtiger Daten</li>
+          <li>Recht auf Löschung Ihrer Daten</li>
+          <li>Recht auf Einschränkung der Bearbeitung</li>
+          <li>Recht auf Datenübertragbarkeit</li>
+          <li>Widerspruchsrecht gegen die Datenbearbeitung</li>
+        </ul>
+        <p class="mt-4">Zur Wahrnehmung dieser Rechte wenden Sie sich bitte an: <a href="mailto:info@podoro.ch" class="underline underline-offset-4 hover:opacity-70 transition-opacity text-foreground">info@podoro.ch</a></p>
+      </section>
+
+      <section>
+        <h2 class="text-[clamp(1.2rem,3vw,2.5rem)] text-primary mb-4 font-heading">Datensicherheit</h2>
+        <p>Wir setzen technische und organisatorische Massnahmen ein, um Ihre Daten vor unbefugtem Zugriff, Verlust oder Missbrauch zu schützen. Unsere Website wird über eine verschlüsselte HTTPS-Verbindung übertragen.</p>
+      </section>
+
+      <section>
+        <h2 class="text-[clamp(1.2rem,3vw,2.5rem)] text-primary mb-4 font-heading">Änderungen</h2>
+        <p>Diese Datenschutzerklärung kann jederzeit angepasst werden. Die jeweils aktuelle Version ist auf dieser Seite abrufbar. Stand: März 2025.</p>
+      </section>
+    </div>
+  </main>
+
+  <FooterSection />
+</Layout>
+
+<script>
+  document.querySelectorAll('.fade-up').forEach(el => el.classList.add('visible'));
+  const mainNav = document.getElementById('main-nav');
+  setTimeout(() => { mainNav?.classList.add('visible'); }, 100);
+</script>

@@ -1,0 +1,89 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+import FooterSection from '../components/FooterSection.astro';
+import '../styles/global.css';
+---
+
+<Layout
+  title="Impressum – PODORO GmbH Podologiepraxis Muri AG"
+  description="Impressum der PODORO GmbH. Angaben gemäss Schweizer Recht: Firmenname, Adresse, Handelsregistereintrag, Kontakt und verantwortliche Person."
+  canonical="/impressum"
+>
+  <Navigation />
+
+  <main class="pt-[18vh] pb-[14vh] px-[5vw]">
+    <h1 class="text-[clamp(3rem,10vw,11rem)] leading-[0.95] text-primary mb-[8vh] fade-up">
+      Impressum
+    </h1>
+
+    <div class="max-w-[720px] space-y-12 fade-up font-body">
+
+      <section>
+        <h2 class="text-[clamp(1.2rem,3vw,2.5rem)] text-primary mb-4">Angaben zur Unternehmung</h2>
+        <div class="text-[clamp(0.9rem,1.4vw,1.15rem)] font-light text-muted-foreground leading-relaxed space-y-1">
+          <p><strong class="font-medium text-foreground">Firma:</strong> PODORO GmbH</p>
+          <p><strong class="font-medium text-foreground">Adresse:</strong> Luzernerstrasse 15b, 5630 Muri AG, Schweiz</p>
+          <p><strong class="font-medium text-foreground">Telefon:</strong> <a href="tel:+41566107070" class="underline underline-offset-4 hover:opacity-60 transition-opacity">056 610 70 70</a></p>
+          <p><strong class="font-medium text-foreground">E-Mail:</strong> <a href="mailto:info@podoro.ch" class="underline underline-offset-4 hover:opacity-60 transition-opacity">info@podoro.ch</a></p>
+          <p><strong class="font-medium text-foreground">Webseite:</strong> <a href="https://podoro.ch" class="underline underline-offset-4 hover:opacity-60 transition-opacity">podoro.ch</a></p>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-[clamp(1.2rem,3vw,2.5rem)] text-primary mb-4">Vertretungsberechtigte Person</h2>
+        <div class="text-[clamp(0.9rem,1.4vw,1.15rem)] font-light text-muted-foreground leading-relaxed">
+          <p>Noëlle Rohrbach, Geschäftsführerin</p>
+          <p>Dipl. Podologin HF, Berufsbildnerin</p>
+          <p>Mitglied des Schweizerischen Podologenverbands (SPV)</p>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-[clamp(1.2rem,3vw,2.5rem)] text-primary mb-4">Handelsregister</h2>
+        <div class="text-[clamp(0.9rem,1.4vw,1.15rem)] font-light text-muted-foreground leading-relaxed space-y-1">
+          <p><strong class="font-medium text-foreground">Kanton:</strong> Aargau</p>
+          <p><strong class="font-medium text-foreground">Unternehmensform:</strong> GmbH</p>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-[clamp(1.2rem,3vw,2.5rem)] text-primary mb-4">Mehrwertsteuer</h2>
+        <p class="text-[clamp(0.9rem,1.4vw,1.15rem)] font-light text-muted-foreground leading-relaxed">
+          Medizinische Podologie-Behandlungen sind in der Schweiz von der MWST befreit (Art. 21 Abs. 2 Ziff. 3 MWSTG), sofern die entsprechenden Voraussetzungen erfüllt sind.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-[clamp(1.2rem,3vw,2.5rem)] text-primary mb-4">Haftungsausschluss</h2>
+        <p class="text-[clamp(0.9rem,1.4vw,1.15rem)] font-light text-muted-foreground leading-relaxed">
+          Die PODORO GmbH übernimmt keine Gewähr für die Aktualität, Richtigkeit und Vollständigkeit der auf dieser Website bereitgestellten Informationen. Haftungsansprüche gegen die PODORO GmbH wegen Schäden materieller oder immaterieller Art, die durch die Nutzung der Website verursacht wurden, sind grundsätzlich ausgeschlossen. Für Inhalte externer Webseiten, auf die verlinkt wird, trägt die PODORO GmbH keine Verantwortung.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-[clamp(1.2rem,3vw,2.5rem)] text-primary mb-4">Urheberrecht</h2>
+        <p class="text-[clamp(0.9rem,1.4vw,1.15rem)] font-light text-muted-foreground leading-relaxed">
+          Alle Inhalte dieser Website (Texte, Bilder, Grafiken, Logos) sind urheberrechtlich geschützt und dürfen ohne schriftliche Genehmigung der PODORO GmbH nicht reproduziert, verbreitet oder für öffentliche Zwecke verwendet werden.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-[clamp(1.2rem,3vw,2.5rem)] text-primary mb-4">Streitschlichtung</h2>
+        <p class="text-[clamp(0.9rem,1.4vw,1.15rem)] font-light text-muted-foreground leading-relaxed">
+          Die PODORO GmbH ist nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen. Anwendbares Recht ist ausschliesslich Schweizer Recht. Gerichtsstand ist Muri AG.
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <FooterSection />
+</Layout>
+
+<script>
+  document.querySelectorAll('.fade-up').forEach(el => {
+    el.classList.add('visible');
+  });
+  const mainNav = document.getElementById('main-nav');
+  setTimeout(() => { mainNav?.classList.add('visible'); }, 100);
+</script>
