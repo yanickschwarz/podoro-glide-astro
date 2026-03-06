@@ -1,0 +1,53 @@
+---
+export interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'PODORO – Podologiepraxis Muri AG',
+  description = 'Die Podologiepraxis PODORO bietet hochwertige medizinische Fusspflege in Muri AG. Professionelle Behandlungen für gesunde Füsse.',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <title>{title}</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "MedicalBusiness",
+        "name": "PODORO GmbH",
+        "description": "Podologiepraxis in Muri AG – medizinische Fusspflege",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Luzernerstrasse 15b",
+          "addressLocality": "Muri AG",
+          "postalCode": "5630",
+          "addressCountry": "CH"
+        },
+        "telephone": "+41566107070",
+        "email": "info@podoro.ch",
+        "url": "https://podoro.ch"
+      }
+    </script>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

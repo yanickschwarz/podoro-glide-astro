@@ -1,0 +1,174 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Mak';
+  src: url('/fonts/Mak-ExtraBold.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --background: 37 20% 85%;
+    --foreground: 30 15% 29%;
+    --primary: 30 15% 29%;
+    --primary-foreground: 40 22% 84%;
+    --muted: 37 15% 75%;
+    --muted-foreground: 30 10% 45%;
+    --border: 30 12% 70%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 400;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Mak', serif;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    line-height: 0.95;
+  }
+}
+
+@layer utilities {
+  .font-heading {
+    font-family: 'Mak', serif;
+    text-transform: uppercase;
+    font-weight: 800;
+  }
+
+  .font-body {
+    font-family: 'Barlow Condensed', sans-serif;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Animation classes for JS-driven animations */
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Loading screen */
+#loading-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: hsl(var(--primary));
+  transition: opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1), filter 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+#loading-screen.hidden {
+  opacity: 0;
+  filter: blur(20px);
+  pointer-events: none;
+}
+
+#loading-logo {
+  width: clamp(200px, 60vw, 500px);
+  opacity: 0;
+  transform: scale(0.9);
+  filter: blur(10px);
+  transition: opacity 1s ease, transform 1s ease, filter 1s ease;
+}
+
+#loading-logo.visible {
+  opacity: 1;
+  transform: scale(1);
+  filter: blur(0px);
+}
+
+/* Navigation animation */
+#main-nav {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+#main-nav.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hero animations */
+#hero-slogan {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+#hero-slogan.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#hero-fg {
+  opacity: 0;
+  transform: translateY(60px);
+  transition: opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1), transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+#hero-fg.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Services accordion */
+.service-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease;
+  opacity: 0;
+}
+
+.service-content.open {
+  max-height: 1000px;
+  opacity: 1;
+}
+
+.service-icon {
+  display: inline-block;
+  transition: transform 0.3s ease;
+  font-size: clamp(1.5rem, 2vw, 2rem);
+  color: hsl(var(--primary) / 0.5);
+}
+
+.service-icon.open {
+  transform: rotate(45deg);
+}
+
+/* Parallax for hero */
+#hero-bg {
+  position: absolute;
+  inset: -20px;
+  z-index: 0;
+}
+
+#hero-fg-layer {
+  position: absolute;
+  inset: -20px;
+  z-index: 10;
+}

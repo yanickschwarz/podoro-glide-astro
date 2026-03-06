@@ -1,0 +1,80 @@
+---
+---
+
+<section id="top" class="relative h-[100dvh] w-full overflow-hidden">
+  <!-- Background layer with parallax -->
+  <div id="hero-bg" class="absolute inset-[-20px] z-0">
+    <img
+      src="/background.jpg"
+      alt=""
+      class="h-full w-full object-cover"
+      width="1920"
+      height="1080"
+      fetchpriority="high"
+    />
+  </div>
+
+  <!-- Dark overlay -->
+  <div
+    class="absolute inset-0 z-[1]"
+    style="background: linear-gradient(to top, hsl(30 15% 29% / 0.4) 0%, transparent 50%, hsl(30 15% 29% / 0.2) 100%);"
+  ></div>
+
+  <!-- Slogan -->
+  <div
+    id="hero-slogan"
+    class="absolute bottom-[12vh] left-[5vw] z-10 max-w-[45vw]"
+  >
+    <p class="font-body text-[clamp(1rem,2vw,1.6rem)] font-light leading-relaxed text-primary-foreground tracking-wide drop-shadow-md">
+      Podologie – Die Kunst, jedem Schritt Leichtigkeit zu schenken und den Füssen neue Wege zu öffnen.
+    </p>
+  </div>
+
+  <!-- Foreground - Noelle -->
+  <div id="hero-fg-layer" class="absolute inset-[-20px] z-10">
+    <img
+      id="hero-fg"
+      src="/noelle-hero.png"
+      alt="Noëlle Rohrbach – Inhaberin PODORO"
+      class="h-full w-full object-cover object-bottom"
+      width="1920"
+      height="1080"
+    />
+  </div>
+</section>
+
+<script>
+  // Mouse parallax
+  const heroSection = document.getElementById('top') as HTMLElement;
+  const heroBg = document.getElementById('hero-bg') as HTMLElement;
+  const heroFgLayer = document.getElementById('hero-fg-layer') as HTMLElement;
+
+  if (heroSection && heroBg && heroFgLayer) {
+    let targetBgX = 0, targetBgY = 0;
+    let targetFgX = 0, targetFgY = 0;
+    let currentBgX = 0, currentBgY = 0;
+    let currentFgX = 0, currentFgY = 0;
+
+    heroSection.addEventListener('mousemove', (e: MouseEvent) => {
+      const rect = heroSection.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      targetBgX = x * -20;
+      targetBgY = y * -10;
+      targetFgX = x * 30;
+      targetFgY = y * 16;
+    });
+
+    function animate() {
+      currentBgX += (targetBgX - currentBgX) * 0.05;
+      currentBgY += (targetBgY - currentBgY) * 0.05;
+      currentFgX += (targetFgX - currentFgX) * 0.05;
+      currentFgY += (targetFgY - currentFgY) * 0.05;
+
+      heroBg.style.transform = `translate(${currentBgX}px, ${currentBgY}px)`;
+      heroFgLayer.style.transform = `translate(${currentFgX}px, ${currentFgY}px)`;
+      requestAnimationFrame(animate);
+    }
+    animate();
+  }
+</script>

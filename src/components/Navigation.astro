@@ -1,0 +1,67 @@
+---
+---
+
+<header
+  id="main-nav"
+  class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-[5vw] py-5"
+>
+  <!-- Backdrop gradient on scroll -->
+  <div
+    id="nav-backdrop"
+    class="absolute inset-0 opacity-0 transition-opacity duration-500 pointer-events-none"
+    style="background: linear-gradient(to bottom, hsl(30 15% 29% / 0.85) 0%, transparent 100%);"
+  ></div>
+
+  <!-- Left menu -->
+  <nav class="relative hidden md:flex items-center gap-8 flex-1">
+    <a
+      href="#leistungen"
+      class="font-body text-xs font-medium tracking-[0.2em] uppercase text-primary-foreground/90 transition-opacity hover:opacity-60 drop-shadow-sm"
+    >
+      Leistungen
+    </a>
+    <a
+      href="#ueber-uns"
+      class="font-body text-xs font-medium tracking-[0.2em] uppercase text-primary-foreground/90 transition-opacity hover:opacity-60 drop-shadow-sm"
+    >
+      Über uns
+    </a>
+  </nav>
+
+  <!-- Center logo -->
+  <a href="#top" class="relative">
+    <img
+      src="/logo-podoro.png"
+      alt="PODORO"
+      class="w-[130px] md:w-[150px] drop-shadow-lg"
+      width="150"
+      height="50"
+    />
+  </a>
+
+  <!-- Right menu -->
+  <nav class="relative hidden md:flex items-center justify-end gap-8 flex-1">
+    <a
+      href="#kontakt"
+      class="font-body text-xs font-medium tracking-[0.2em] uppercase text-primary-foreground/90 transition-opacity hover:opacity-60 drop-shadow-sm"
+    >
+      Kontakt
+    </a>
+    <a
+      href="#galerie"
+      class="font-body text-xs font-medium tracking-[0.2em] uppercase text-primary-foreground/90 transition-opacity hover:opacity-60 drop-shadow-sm"
+    >
+      Galerie
+    </a>
+  </nav>
+</header>
+
+<script>
+  // Scroll backdrop
+  const backdrop = document.getElementById('nav-backdrop');
+  window.addEventListener('scroll', () => {
+    if (backdrop) {
+      backdrop.style.opacity = window.scrollY > 100 ? '1' : '0';
+    }
+  }, { passive: true });
+</script>

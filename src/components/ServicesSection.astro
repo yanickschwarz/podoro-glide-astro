@@ -1,0 +1,118 @@
+---
+const services = [
+  {
+    title: "Medizinische Behandlung",
+    image: "/fusspflege.jpeg",
+    short: "Die komplette medizinische Behandlung dient der fachgerechten Pflege und Gesunderhaltung Ihrer Füsse.",
+    long: "Sie umfasst die Beurteilung von Haut und Nägeln, das fachgerechte Kürzen und Schleifen der Nägel, die Entfernung von Hornhaut und Druckstellen sowie die Behandlung von eingewachsenen oder verdickten Nägeln. Bei Bedarf werden Hühneraugen (Clavi) behandelt und entlastende Massnahmen angewendet. Abschliessend erhalten Sie eine pflegende Versorgung sowie individuelle Empfehlungen für die häusliche Pflege.",
+    link: null,
+  },
+  {
+    title: "Teilbehandlung",
+    image: null,
+    short: "Die podologische Teilbehandlung konzentriert sich gezielt auf ein spezifisches Problem an den Füssen.",
+    long: "Sie umfasst die fachgerechte Behandlung einzelner Beschwerden wie z. B. eingewachsene Nägel, Hühneraugen (Clavi), Druckstellen oder lokal begrenzte Hornhaut. Die Behandlung erfolgt präzise, schonend und individuell abgestimmt, um Beschwerden zu lindern und Folgeschäden vorzubeugen.",
+    link: null,
+  },
+  {
+    title: "Risikopatienten",
+    image: null,
+    short: "Die Behandlung von Risikopatienten richtet sich an Personen mit erhöhtem Komplikationsrisiko.",
+    long: "Im Mittelpunkt stehen eine besonders sorgfältige Befunderhebung, schonende Behandlungstechniken sowie höchste hygienische Standards. Ziel ist es, Druckstellen, Hautläsionen und Entzündungen frühzeitig zu erkennen und fachgerecht zu versorgen, um schwerwiegende Folgekomplikationen zu vermeiden.",
+    link: {
+      label: "Gehöre ich zu den Risikopatienten?",
+      url: "https://www.podologie.swiss/wp-content/uploads/2020/10/definition_risikogruppen_2019.pdf",
+    },
+  },
+  {
+    title: "Krankenkasse",
+    image: "/fuesse.jpeg",
+    short: "Seit dem 1. Januar 2022 können Podologinnen und Podologen die medizinische Fusspflege bei Personen mit Diabetes über die OKP abrechnen.",
+    long: "Voraussetzung ist, dass ein Risikofaktor für ein diabetisches Fuss-Syndrom (DFS) vorliegt und eine ärztliche Verordnung besteht. Bitte bringen Sie bei ihrer ersten Konsultation ihre Krankenkassenkarte und eine vollständig ausgefüllte Verordnung mit.",
+    link: {
+      label: "Verordnungsformular herunterladen",
+      url: "https://www.podologie.swiss/wp-content/uploads/2022/12/221214ab_d_02_verordnungsformular_podologie-de.pdf",
+    },
+  },
+];
+---
+
+<section id="leistungen" class="w-full py-[12vh] px-[5vw]">
+  <h2
+    class="text-[clamp(2rem,7vw,8rem)] leading-[0.95] text-primary mb-[8vh] fade-up"
+  >
+    Leistungen
+  </h2>
+
+  <div class="space-y-0">
+    {services.map((service, i) => (
+      <div
+        class="border-t border-foreground/20 cursor-pointer service-item fade-up"
+        data-index={i}
+      >
+        <div class="flex items-center justify-between py-[3vh]">
+          <h3 class="text-[clamp(1.2rem,4vw,3.5rem)] text-primary">
+            {service.title}
+          </h3>
+          <span class="service-icon">+</span>
+        </div>
+
+        <div class="service-content">
+          <div class="pb-[4vh] grid grid-cols-1 md:grid-cols-2 gap-[4vw]">
+            {service.image && (
+              <div class="overflow-hidden">
+                <img
+                  src={service.image}
+                  alt={service.title}
+                  class="w-full aspect-[16/10] object-cover"
+                  loading="lazy"
+                />
+              </div>
+            )}
+            <div class={service.image ? '' : 'md:col-span-2 max-w-[800px]'}>
+              <p class="font-body text-[clamp(1rem,1.6vw,1.3rem)] font-medium leading-relaxed text-foreground mb-4">
+                {service.short}
+              </p>
+              <p class="font-body text-[clamp(0.9rem,1.3vw,1.1rem)] font-light leading-relaxed text-muted-foreground">
+                {service.long}
+              </p>
+              {service.link && (
+                <a
+                  href={service.link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-block mt-6 font-body text-[clamp(0.9rem,1.2vw,1.1rem)] font-medium text-primary underline underline-offset-4 hover:opacity-60 transition-opacity"
+                >
+                  {service.link.label} →
+                </a>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    ))}
+    <div class="border-t border-foreground/20"></div>
+  </div>
+</section>
+
+<script>
+  const items = document.querySelectorAll('.service-item');
+
+  items.forEach((item) => {
+    item.addEventListener('click', () => {
+      const content = item.querySelector('.service-content') as HTMLElement;
+      const icon = item.querySelector('.service-icon') as HTMLElement;
+      const isOpen = content?.classList.contains('open');
+
+      // Close all
+      document.querySelectorAll('.service-content').forEach(c => c.classList.remove('open'));
+      document.querySelectorAll('.service-icon').forEach(i => i.classList.remove('open'));
+
+      // Open clicked if was closed
+      if (!isOpen && content && icon) {
+        content.classList.add('open');
+        icon.classList.add('open');
+      }
+    });
+  });
+</script>
